@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ultimate Tic Tac Toe</title>
+    <link rel="stylesheet" href="ai.css">
+</head>
+<body>
+    
+    <audio id="background-music" preload="auto" loop>
+        <source src="Background_music.mp3" type="audio/mpeg">
+      </audio>
+      
+    <button id="back-button">← Back</button>
+
+    <div id="game">
+        <div id="big-board">
+            <!-- 9 small boards -->
+            <div class="small-board" data-big-x="0" data-big-y="0">
+                <div class="cell" data-small-x="0" data-small-y="0"></div>
+                <div class="cell" data-small-x="0" data-small-y="1"></div>
+                <div class="cell" data-small-x="0" data-small-y="2"></div>
+                <div class="cell" data-small-x="1" data-small-y="0"></div>
+                <div class="cell" data-small-x="1" data-small-y="1"></div>
+                <div class="cell" data-small-x="1" data-small-y="2"></div>
+                <div class="cell" data-small-x="2" data-small-y="0"></div>
+                <div class="cell" data-small-x="2" data-small-y="1"></div>
+                <div class="cell" data-small-x="2" data-small-y="2"></div>
+            </div>
+            <div class="small-board" data-big-x="0" data-big-y="1">
+                <div class="cell" data-small-x="0" data-small-y="0"></div>
+                <div class="cell" data-small-x="0" data-small-y="1"></div>
+                <div class="cell" data-small-x="0" data-small-y="2"></div>
+                <div class="cell" data-small-x="1" data-small-y="0"></div>
+                <div class="cell" data-small-x="1" data-small-y="1"></div>
+                <div class="cell" data-small-x="1" data-small-y="2"></div>
+                <div class="cell" data-small-x="2" data-small-y="0"></div>
+                <div class="cell" data-small-x="2" data-small-y="1"></div>
+                <div class="cell" data-small-x="2" data-small-y="2"></div>
+            </div>
+            <div class="small-board" data-big-x="0" data-big-y="2">
+                <div class="cell" data-small-x="0" data-small-y="0"></div>
+                <div class="cell" data-small-x="0" data-small-y="1"></div>
+                <div class="cell" data-small-x="0" data-small-y="2"></div>
+                <div class="cell" data-small-x="1" data-small-y="0"></div>
+                <div class="cell" data-small-x="1" data-small-y="1"></div>
+                <div class="cell" data-small-x="1" data-small-y="2"></div>
+                <div class="cell" data-small-x="2" data-small-y="0"></div>
+                <div class="cell" data-small-x="2" data-small-y="1"></div>
+                <div class="cell" data-small-x="2" data-small-y="2"></div>
+            </div>
+            <div class="small-board" data-big-x="1" data-big-y="0">
+                <div class="cell" data-small-x="0" data-small-y="0"></div>
+                <div class="cell" data-small-x="0" data-small-y="1"></div>
+                <div class="cell" data-small-x="0" data-small-y="2"></div>
+                <div class="cell" data-small-x="1" data-small-y="0"></div>
+                <div class="cell" data-small-x="1" data-small-y="1"></div>
+                <div class="cell" data-small-x="1" data-small-y="2"></div>
+                <div class="cell" data-small-x="2" data-small-y="0"></div>
+                <div class="cell" data-small-x="2" data-small-y="1"></div>
+                <div class="cell" data-small-x="2" data-small-y="2"></div>
+            </div>
+            <div class="small-board" data-big-x="1" data-big-y="1">
+                <div class="cell" data-small-x="0" data-small-y="0"></div>
+                <div class="cell" data-small-x="0" data-small-y="1"></div>
+                <div class="cell" data-small-x="0" data-small-y="2"></div>
+                <div class="cell" data-small-x="1" data-small-y="0"></div>
+                <div class="cell" data-small-x="1" data-small-y="1"></div>
+                <div class="cell" data-small-x="1" data-small-y="2"></div>
+                <div class="cell" data-small-x="2" data-small-y="0"></div>
+                <div class="cell" data-small-x="2" data-small-y="1"></div>
+                <div class="cell" data-small-x="2" data-small-y="2"></div>
+            </div>
+            <div class="small-board" data-big-x="1" data-big-y="2">
+                <div class="cell" data-small-x="0" data-small-y="0"></div>
+                <div class="cell" data-small-x="0" data-small-y="1"></div>
+                <div class="cell" data-small-x="0" data-small-y="2"></div>
+                <div class="cell" data-small-x="1" data-small-y="0"></div>
+                <div class="cell" data-small-x="1" data-small-y="1"></div>
+                <div class="cell" data-small-x="1" data-small-y="2"></div>
+                <div class="cell" data-small-x="2" data-small-y="0"></div>
+                <div class="cell" data-small-x="2" data-small-y="1"></div>
+                <div class="cell" data-small-x="2" data-small-y="2"></div>
+            </div>
+            <div class="small-board" data-big-x="2" data-big-y="0">
+                <div class="cell" data-small-x="0" data-small-y="0"></div>
+                <div class="cell" data-small-x="0" data-small-y="1"></div>
+                <div class="cell" data-small-x="0" data-small-y="2"></div>
+                <div class="cell" data-small-x="1" data-small-y="0"></div>
+                <div class="cell" data-small-x="1" data-small-y="1"></div>
+                <div class="cell" data-small-x="1" data-small-y="2"></div>
+                <div class="cell" data-small-x="2" data-small-y="0"></div>
+                <div class="cell" data-small-x="2" data-small-y="1"></div>
+                <div class="cell" data-small-x="2" data-small-y="2"></div>
+            </div>
+            <div class="small-board" data-big-x="2" data-big-y="1">
+                <div class="cell" data-small-x="0" data-small-y="0"></div>
+                <div class="cell" data-small-x="0" data-small-y="1"></div>
+                <div class="cell" data-small-x="0" data-small-y="2"></div>
+                <div class="cell" data-small-x="1" data-small-y="0"></div>
+                <div class="cell" data-small-x="1" data-small-y="1"></div>
+                <div class="cell" data-small-x="1" data-small-y="2"></div>
+                <div class="cell" data-small-x="2" data-small-y="0"></div>
+                <div class="cell" data-small-x="2" data-small-y="1"></div>
+                <div class="cell" data-small-x="2" data-small-y="2"></div>
+            </div>
+            <div class="small-board" data-big-x="2" data-big-y="2">
+                <div class="cell" data-small-x="0" data-small-y="0"></div>
+                <div class="cell" data-small-x="0" data-small-y="1"></div>
+                <div class="cell" data-small-x="0" data-small-y="2"></div>
+                <div class="cell" data-small-x="1" data-small-y="0"></div>
+                <div class="cell" data-small-x="1" data-small-y="1"></div>
+                <div class="cell" data-small-x="1" data-small-y="2"></div>
+                <div class="cell" data-small-x="2" data-small-y="0"></div>
+                <div class="cell" data-small-x="2" data-small-y="1"></div>
+                <div class="cell" data-small-x="2" data-small-y="2"></div>
+            </div>
+        </div>
+
+        <div id="message">Player X's turn.</div>
+
+        <button id="reset">Reset Game</button>
+    </div>
+    
+    <script src="audioManager.js" defer></script> <!-- Include audio manager script -->
+    <script src="ai.js"></script>
+    <script src="TicTacToe.js"></script>
+</body>
+</html>

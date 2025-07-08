@@ -1,0 +1,166 @@
+/* General Styles */
+body {
+    font-family: Arial, sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+    background-color: #1a1a1d; /* Dark background for a modern look */
+    color: #ffffff;
+}
+
+#back-button {
+    position: absolute;
+    top: 20px;
+    left: 20px;
+    background-color: #CF0F47;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    font-size: 16px;
+    cursor: pointer;
+    border-radius: 5px;
+    transition: background-color 0.3s ease;
+}
+
+#back-button:hover {
+    background-color: #790d0d;
+}
+
+#game {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+#big-board {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: repeat(3, 1fr);
+    gap: 10px;
+}
+
+.small-board {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: repeat(3, 1fr);
+    gap: 5px;
+    background-color: #2c2c34; /* Darker background for small boards */
+    border: 2px solid #444444;
+    opacity: 0;
+    transform: scale(0);
+    animation: showUp 0.7s forwards;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+@keyframes showUp {
+    to {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+.cell {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 60px;
+    height: 60px;
+    background-color: #3e3e47; /* Neutral cell background */
+    font-size: 24px;
+    cursor: pointer;
+    color: #ffffff;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+.cell:hover {
+background-color: #CF0F47; /* Golden hover effect */
+    box-shadow: 0px 0px 10px 2px #cf0c43;
+    transform: scale(1.1); /* Subtle zoom on hover */
+}
+
+.allowed {
+    box-shadow: 0 0 15px 8px rgba(108, 198, 210, 0.7), inset 0 0 34px 2px rgba(108, 198, 210, 0.7); /* Glow effect */
+}
+
+.completed {
+    pointer-events: none;
+    background-color: #2c2c34; /* Completed board background */
+    position: relative;
+    opacity: 0.8;
+    transition: opacity 0.3s ease;
+}
+
+.completed[data-winner="X"]::after {
+    content: 'X';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-size: 220px;
+    color: #ff3838; /* Vibrant red for X */
+    opacity: 0.2;
+}
+
+.completed[data-winner="O"]::after {
+    content: 'O';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-size: 220px;
+    color: #1e90ff; /* Vibrant blue for O */
+    opacity: 0.2;
+}
+
+#message {
+    margin-top: 20px;
+    font-size: 20px;
+}
+
+.cell.hover-x::before {
+    content: 'X';
+    color: #CF0F47; /* Red for X hover */
+}
+
+.cell.hover-o::before {
+    content: 'O';
+    color: rgba(30, 144, 255, 0.5); /* Blue for O hover */
+}
+
+#player-info {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+#player-info input {
+    margin: 5px;
+    padding: 5px;
+    background-color: #3e3e47;
+    color: #fff;
+    border: 1px solid #555;
+    border-radius: 3px;
+}
+
+#player-info button {
+    padding: 10px 20px;
+    font-size: 16px;
+    cursor: pointer;
+    margin-top: 10px;
+    background-color: #444;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    transition: background-color 0.3s ease;
+}
+
+#player-info button:hover {
+    background-color: #666;
+}
+/* Cell hover effect only for allowed boards */
+.allowed .cell:hover {
+ background-color: #fcce39; /* Yellow hover color */
+    box-shadow: 0px 0px 10px 2px #ffe927;
+}
+

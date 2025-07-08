@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Who Starts First?</title>
+    <link href="https://fonts.googleapis.com/css2?family=Rajdhani:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="ai_start_choice.css">
+</head>
+<body>
+    <audio id="background-music" preload="auto" loop>
+        <source src="Background_music.mp3" type="audio/mpeg">
+      </audio>
+      <div id="volume-control">
+        <label for="volume-slider">Volume</label>
+        <input type="range" id="volume-slider" min="0" max="100" value="100">
+      </div>
+    <div id="back-button-container">
+        <button id="back-button" onclick="goBack()">← Back</button>
+    </div>
+    <div class="container">
+        <h1>Who Starts First?</h1>
+        <div class="button">
+            <button onclick="startGame(false)">Player Starts</button>
+            <button onclick="startGame(true)">AI Starts</button>
+        </div>
+    </div>
+    <script>
+        function goBack() {
+            window.location.href = 'ai_difficulty.html';
+        }
+
+        function startGame(aiStarts) {
+            localStorage.setItem('aiStarts', aiStarts);
+            window.location.href = 'ai.html';
+        }
+        
+    </script>
+    <script src="audioManager.js" defer></script> <!-- Include audio manager script -->
+
+</body>
+</html>

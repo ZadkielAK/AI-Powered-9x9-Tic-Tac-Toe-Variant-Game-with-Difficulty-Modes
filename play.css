@@ -1,0 +1,124 @@
+/* General Styles */
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+    background-color: #1a1a1d;
+    color: #ffffff;
+}
+
+.container {
+    text-align: center;
+    padding-bottom: 40px;
+    transition: all 1.5s ease-in-out;
+}
+
+#title {
+    font-family: "Rajdhani", sans-serif;
+    font-size: 3rem;
+    margin-bottom: 40px;
+    color:   #CF0F47;
+    text-shadow: 0 0 10px rgba(230, 97, 52, 0.7);
+    cursor: pointer;
+    transition: all 0.5s ease-in-out; /* Smooth transition for hover */
+}
+
+/* Hover effect: Change color to match title_2 on hover */
+#title:hover {
+    color: #FFC300; /* Same as #title_2 color */
+    text-shadow: 0 0 10px rgba(255, 195, 0, 0.7), 
+                 0 0 20px rgba(255, 195, 0, 0.7);
+}
+
+#title_2 {
+    font-family: "Rajdhani", sans-serif;
+    font-size: 3rem;
+    margin-bottom: 40px;
+    color: #FFC300;
+    text-shadow: 0 0 10px rgba(255, 195, 0, 0.7), 
+                 0 0 20px rgba(255, 195, 0, 0.7);
+    cursor: pointer;
+    transition: all 1.5s ease-in-out;
+    display: none; /* Initially hidden */
+}
+
+/* Cool animation for when title is clicked */
+.container.animate {
+    transform: scale(0.5);
+    opacity: 0;
+}
+
+/* After animation ends, reset format */
+.container {
+    transform: scale(1);
+    opacity: 1;
+}
+
+/* Button container */
+.button {
+    display: none; /* Initially hidden */
+    flex-direction: row;
+    gap: 20px;
+    justify-content: center;
+}
+
+/* Button Styles */
+.button button {
+    padding: 15px 30px; 
+    font-size: 20px;
+    background: linear-gradient(145deg, #3e3e47, #4e4e57);
+
+    border-color: rgba(108, 198, 210, 0.9); /* Brighter blue focus */
+    border-radius: 5px;
+    cursor: pointer;
+    color: #ffffff;
+    transition: background-color 0.3s, box-shadow 0.3s;
+    font-family: "Rajdhani", sans-serif;
+    font-weight: 400;
+}
+
+/* Hover effect */
+.button button:hover {
+    background-color: #CF0F47;
+    box-shadow: 0 0 15px #cf0c43, 
+    0 0 30px #cf0c43;
+
+}
+
+/* Animation for buttons to appear */
+.button.show {
+    opacity: 1;
+    transform: scale(1.05);
+    transition: opacity 0.5s ease-in-out, transform 0.5s ease-in-out;
+}
+
+
+
+/* Button Spacing */
+.button button {
+    margin: 10px;
+}
+
+#volume-control {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    display: flex;
+    align-items: center;
+    background-color: rgba(0, 0, 0, 0.5);
+    padding: 10px;
+    border-radius: 5px;
+  }
+  
+  #volume-control label {
+    color: white;
+    font-family: "Rajdhani", sans-serif;
+    margin-right: 10px;
+  }
+  
+  #volume-slider {
+    width: 150px;
+  }
+  

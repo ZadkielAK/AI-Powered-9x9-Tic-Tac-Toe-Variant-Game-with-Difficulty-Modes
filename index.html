@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Tic Tac Toe Game</title>
+  <link rel="stylesheet" href="play.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Rajdhani:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <script src="audioManager.js" defer></script> <!-- Include audio manager script -->
+</head>
+<body>
+  <audio id="background-music" preload="auto" loop>
+    <source src="Background_music.mp3" type="audio/mpeg">
+  </audio>
+
+  <div class="container" id="main-container">
+    <h1 id="title" onclick="startGame()">Tic Tac Toe Game</h1>
+    <h1 id="title_2" style="display:none;">Tic Tac Toe Game</h1> <!-- Initially hidden -->
+    <div class="button" id="game-options" style="display:none;">
+      <button id="rajdhani-regular" onclick="window.location.href='ai_difficulty.html'">Play with AI</button>
+      <button id="rajdhani-regular">Play Online (coming soon)</button>
+      <button id="rajdhani-regular" onclick="window.location.href='name.html'">Couch Play</button>
+    </div>
+  </div>
+  <div id="volume-control" style="display: none;">
+    <label for="volume-slider">Volume</label>
+    <input type="range" id="volume-slider" min="0" max="100" value="100">
+  </div>
+
+  <script>
+    function startGame() {
+      const title = document.getElementById('title');
+      const title_2 = document.getElementById('title_2');
+      const options = document.getElementById('game-options');
+      const container = document.getElementById('main-container');
+      const music = document.getElementById('background-music');
+      const control = document.getElementById('volume-control');
+
+      // Start background music
+      music.play();
+
+      // Add animation class for transition
+      container.classList.add('animate');
+
+      // Show game options after transition
+      setTimeout(() => {
+        title.style.display = 'none'; // Hide the original title
+        control.style.display = 'flex';
+        title_2.style.display = 'block'; // Show the second title
+        container.classList.remove('animate'); // Remove the animation effect
+        options.style.display = 'flex'; // Display the game options
+
+        // Store in session storage that the game has started
+        sessionStorage.setItem('gameStarted', 'true');
+      }, 1500); // Adjust the timeout to match the animation duration
+    }
+
+    window.onload = function() {
+      const gameStarted = sessionStorage.getItem('gameStarted');
+      const title = document.getElementById('title');
+      const title_2 = document.getElementById('title_2');
+      const options = document.getElementById('game-options');
+      const control = document.getElementById('volume-control');
+
+      // If the game has started, show title_2 and the options immediately
+      if (gameStarted === 'true') {
+        title.style.display = 'none';
+        control.style.display = 'flex';
+        title_2.style.display = 'block';
+        options.style.display = 'flex';
+      }
+    };
+  </script>
+</body>
+</html>
